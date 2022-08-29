@@ -5,7 +5,7 @@ import BreweryResults from '../BreweryResults/BreweryResults';
 
 import makeApiCall from '../../helpers/makeApiCall';
 
-
+import './BrewerySearch.css'
 
 const BrewerySearch = () => {
 
@@ -66,10 +66,10 @@ const BrewerySearch = () => {
 
     return <div>
         <h2>Find Breweries</h2>
-        <form onSubmit={handleSubmit}>
+        <form className="search-form" onSubmit={handleSubmit}>
             <div>
                 <label htmlFor="city">City</label>
-                <input type="text" name="city" placeholder="New York City" value={city} onChange={handleChange}></input>
+                <input type="text" name="city" placeholder="Dublin" value={city} onChange={handleChange}></input>
             </div>
             <div>
                 <label htmlFor="type">Type</label>

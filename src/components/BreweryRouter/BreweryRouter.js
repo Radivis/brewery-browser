@@ -6,6 +6,7 @@ import BrewerySearch from "../BrewerySearch/BrewerySearch";
 const BreweryRouter = () => {
     return <Routes>
         <Route path="/" element={<BrewerySearch />}/>
+        {/* <Route path="/login" element={<Login />}/> */}
         {/* <Route path="/change-user-data" element={<ChangeUserData />}/>
         <Route path="/highscores" element={<HighScores />}/>
         <Route path="/login" element={<Login />}/>
