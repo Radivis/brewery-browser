@@ -1,14 +1,20 @@
 import React from "react";
 import { Link } from 'react-router-dom'
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import './NavBar.css';
 
 const NavBar = () => {
 
+    const dispatch = useDispatch()
+
     const currentUserId = useSelector(state => state.currentUserId)
 
     const currentUser = useSelector(state => state.users.find(user => user.id === currentUserId))
+
+    const handleLogout = ev => {
+        dispatch({type: 'LOGOUT'})
+    }
 
     return <nav className="navbar">
         <div class="container nav-container">
@@ -24,7 +30,9 @@ const NavBar = () => {
             <div class="login-container">
                 {currentUser ? `Hello, ${currentUser.username}!` : "Not logged in"}
                 <div>
-                    {currentUser ? <button>Logout</button> : <button>Login</button>}
+                    {currentUser ?
+                    <button onClick={handleLogout}>Logout</button>
+                    : <Link to="/login"><button>Login</button></Link>}
                 </div>
             </div>
             <div class="menu-items">

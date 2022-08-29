@@ -12,11 +12,7 @@ code {
     monospace;
 }
 
-/* DEBUG */
-.card {
-  display: flex;
-  flex-direction: column;
-  border: 2px solid hsl('90, 50%, 25%');
-  border-radius: 5px;
-  background-color: hsl('90, 50%, 75%');
+form {
+  margin: 5px;
 }
+
