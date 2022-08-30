@@ -2,9 +2,19 @@
     margin: 5px;
 }
 
-.favorite-button {
-    font-size: larger;
+.transparent {
     background-color: rgba(0,0,0,0);
     border: 0;
+}
+
+.favorite-button {
+    font-size: larger;
     width: 40px;
+    cursor: pointer;
+}
+
+.details-button {
+    font-size: larger;
+    width: 40px;
+    cursor: pointer;
 }

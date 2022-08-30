@@ -1,4 +1,3 @@
-// This is a function, because hooks can't be used within event handlers (but maybe AS event handlers)!
 
 
 // useDispatch can't be used in a regular function, so it's passed as argument
@@ -31,11 +30,6 @@ const makeApiCall = ({
             console.log(underscoreEncodedCity);
 
             url += `?by_city=${underscoreEncodedCity}&by_type=${params.type}`
-        }
-        break;
-
-        case 'by_id': {
-            url += `/${params.id}`
         }
         break;
 

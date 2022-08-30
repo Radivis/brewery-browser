@@ -5,7 +5,7 @@ import React, { useState } from "react";
 
 import ActionPanel from "../ActionPanel/ActionPanel";
 import useUser from "../../hooks/useUser";
-import useFetchBrewery from "../../hooks/useRequestBrewery";
+import useFetchBrewery from "../../hooks/useFetchBrewery";
 
 import './BreweryCard.css';
 

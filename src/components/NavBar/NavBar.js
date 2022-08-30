@@ -51,7 +51,7 @@ const NavBar = () => {
                             : <Link to="/login"><button>Login</button></Link>}
                     </div>
                 </div>
-                <div>{!isBackendServerOnline ? <i className="fa-regular fa-database"></i> : ''}</div>
+                <div>{!isBackendServerOnline ? <i className="fa-solid fa-database"></i> : ''}</div>
             </div>
             <div className={isMenuActive ? 'menu-items menu-items-slide-in' : 'menu-items'}>
                 <li><Link to="/">Search</Link></li>

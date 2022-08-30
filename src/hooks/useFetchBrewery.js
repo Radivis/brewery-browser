@@ -13,7 +13,7 @@ import { useState } from "react"
 
 const useFetchBrewery = ({
     id,
-    name,
+    name = '',
     loadedData,
     setLoadedData } = {}) => {
 
