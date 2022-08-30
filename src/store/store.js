@@ -3,6 +3,8 @@ import { configureStore } from '@reduxjs/toolkit'
 import reducer from './reducer';
 
 const preloadedState = {
+    isBackendServerOnline: true,
+    shouldSave: false, // flag to indicate whether state should be saved
     lastApiResponse: null,
     currentUserId: -1,
     users: [{

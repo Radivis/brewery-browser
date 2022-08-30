@@ -51,6 +51,9 @@ const reducer = (state, action) => {
                 // New users are logged in immediately!
                 newState.currentUserId = newUserId
 
+                // The new user data should be saved!
+                newState.shouldSave = true
+
                 return newState
             }
 
@@ -62,6 +65,28 @@ const reducer = (state, action) => {
             return newState
         }
             break;
+
+        case 'SET_NO_CONNECTION_TO_DATA_SERVER': {
+            const newState = deepCopy(state)
+
+            newState.isBackendServerOnline = false
+            return newState
+        }
+            break;
+
+        case 'SET_SHOULD_SAVE_FALSE': {
+            const newState = deepCopy(state)
+
+            newState.shouldSave = false
+            return newState
+        }
+            break;
+
+        case 'IMPORT_STATE_FROM_SERVER': {
+            return action.data
+        }
+            break;
+
 
         default: return state
     }

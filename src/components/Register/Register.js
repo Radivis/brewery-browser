@@ -1,13 +1,25 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+
+import useSave from "../../hooks/useSave";
 
 const Register = () => {
 
     const dispatch = useDispatch()
+    const shouldSave = useSelector(state => state.shouldSave)
+    const save = useSave()
 
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
     const [passwordRepeat, setPasswordRepeat] = useState("")
+
+    // TODO: Refactor useSave, so that it replaces this construct
+    useEffect(() => {
+        if(shouldSave) {
+            save()
+            dispatch({type: "SET_SHOULD_SAVE_FALSE"})
+        }
+    }, [shouldSave])
 
     // const currentUserId = useSelector(state => state.currentUserId)
 
@@ -32,12 +44,17 @@ const Register = () => {
 
         // TODO: Clear input fields
 
+        // The return value of dispatch is just the action that is passed to it
         dispatch({
             type: 'REGISTER_USER',
             username,
             password,
             passwordRepeat
         })
+
+        // Problem: save uses the state at the rendering of this component and doesn't access the dispatched data yet!
+        // Idea: Make save a function that wraps around dispatch to fix that somehow.
+        save()
     }
 
     return <form onSubmit={handleSubmit}>

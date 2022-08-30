@@ -25,6 +25,15 @@ see also: https://alvarotrigo.com/blog/hamburger-menu-css/ */
   height: 62px;
 }
 
+.navbar-header {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-items: center;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .navbar .menu-items {
   display: flex;
 }
@@ -100,7 +109,6 @@ see also: https://alvarotrigo.com/blog/hamburger-menu-css/ */
 
 .navbar .menu-items {
   padding-top: 120px;
-  /* box-shadow: inset 0 0 2000px rgba(255, 255, 255, .9); */
   height: 100vh;
   width: 100%;
   transform: translate(-150%);
@@ -110,7 +118,6 @@ see also: https://alvarotrigo.com/blog/hamburger-menu-css/ */
   padding-left: 50px;
   transition: transform 0.5s ease-in-out;
   text-align: center;
-  /* background-color: hsla(60, 100%, 80%, 0.5); */
   background:
     linear-gradient(to right,  hsla(60, 100%, 80%, 0), hsla(60, 100%, 80%, 0.75), hsla(60, 100%, 80%, 0));
 }
@@ -141,22 +148,22 @@ see also: https://alvarotrigo.com/blog/hamburger-menu-css/ */
   right: 5px;
 }
 
-.nav-container input[type="checkbox"]:checked~.menu-items {
+.nav-container .menu-items-slide-in {
   transform: translateX(0);
 }
 
-.nav-container input[type="checkbox"]:checked~.hamburger-lines .line1 {
+.hamburger-container input[type="checkbox"]:checked~.hamburger-lines .line1 {
   transform: rotate(45deg);
 }
 
-.nav-container input[type="checkbox"]:checked~.hamburger-lines .line2 {
+.hamburger-container input[type="checkbox"]:checked~.hamburger-lines .line2 {
   transform: scaleY(0);
 }
 
-.nav-container input[type="checkbox"]:checked~.hamburger-lines .line3 {
+.hamburger-container input[type="checkbox"]:checked~.hamburger-lines .line3 {
   transform: rotate(-45deg);
 }
 
-.nav-container input[type="checkbox"]:checked~.logo {
+/* .hamburger-container input[type="checkbox"]:checked~.logo {
   display: none;
-}
+} */
