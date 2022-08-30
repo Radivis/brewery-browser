@@ -74,8 +74,8 @@ const BrewerySearch = () => {
             <div>
                 <label htmlFor="type">Type</label>
                 <select name="type" value={type} onChange={handleChange}>
-                    <option value="">-Select a type-</option>
-                    {validTypes.map(validType => <option value={validType}>{validType}</option>)}
+                    <option value="" key="nothing selected">-Select a type-</option>
+                    {validTypes.map(validType => <option value={validType} key={validType}>{validType}</option>)}
                 </select>
             </div>
             <button type="submit">Search Breweries</button>

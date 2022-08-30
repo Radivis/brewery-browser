@@ -1,3 +1,8 @@
+/*
+This custom Hook imports the data from store.json
+into the Redux store once!
+*/
+
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 
