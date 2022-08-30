@@ -11,7 +11,7 @@ const NavBar = () => {
     const dispatch = useDispatch()
 
     // Load data from store.json ONCE at initialization of NavBar!
-    useEffect(useLoad, [])
+    useLoad()
 
     const isBackendServerOnline = useSelector(state => state.isBackendServerOnline)
 
