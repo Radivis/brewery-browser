@@ -30,6 +30,9 @@ const reducer = (state, action) => {
             const newState = deepCopy(state)
 
             newState.currentUserId = -1
+
+            // The last API response should be deleted, so that user users don't see it!
+            newState.lastApiResponse = null
             return newState
         }
 
@@ -84,6 +87,32 @@ const reducer = (state, action) => {
 
         case 'IMPORT_STATE_FROM_SERVER': {
             return action.data
+        }
+            break;
+
+        case 'TOGGLE_FAVORITES': {
+            const newState = deepCopy(state)
+
+            const currentUserId = newState.currentUserId
+            const currentUser = newState.users.find(user => user.id === currentUserId)
+
+            const registeredBreweryIds = currentUser.breweries.map(brewery => brewery.id)
+            if (!registeredBreweryIds.includes(action.id)) {
+                const newBrewery = {
+                    id: action.id,
+                    isFavorite: true,
+                    rating: -1,
+                    comment: ''
+                }
+                currentUser.breweries.push(newBrewery)
+            } else {
+                const updatedBrewery = currentUser.breweries.find(brewery => brewery.id === action.id)
+                updatedBrewery.isFavorite = !updatedBrewery.isFavorite
+            }
+
+            newState.shouldSave = true
+            
+            return newState
         }
             break;
 

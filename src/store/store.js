@@ -1,3 +1,9 @@
+/*
+This preloadedState is used to initialize the Redux store
+If the data server is used, it will be overwritten
+by the state from state.json!
+*/
+
 import { configureStore } from '@reduxjs/toolkit'
 
 import reducer from './reducer';
@@ -16,6 +22,7 @@ const preloadedState = {
                 id: 'string',
                 isFavorite: false,
                 rating: -1,
+                comment: ''
             }
         ]
     }]

@@ -1,0 +1,10 @@
+.action-panel {
+    margin: 5px;
+}
+
+.favorite-button {
+    font-size: larger;
+    background-color: rgba(0,0,0,0);
+    border: 0;
+    width: 40px;
+}

@@ -26,8 +26,12 @@ const useSave = () => {
 
     const url = 'http://127.0.0.1:3010/save'
 
-    useEffect(() => {
     if (shouldSave) {
+        // DEBUG
+        console.log("Trying to save most current state to store.json");
+        console.log("State to save:");
+        console.log(state);
+
         fetch(url, {
             method: "post",
             headers: {
@@ -45,7 +49,6 @@ const useSave = () => {
 
         dispatch({ type: "SET_SHOULD_SAVE_FALSE" })
     }
-    }, [shouldSave])
 }
 
 export default useSave

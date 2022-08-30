@@ -2,10 +2,16 @@
 of a brewery in a card */
 
 import React from "react";
+import { useSelector } from "react-redux";
+
+import ActionPanel from "../ActionPanel/ActionPanel";
+import useUser from "../../hooks/useUser";
 
 import './BreweryCard.css';
 
 const BreweryCard = ({data}) => {
+
+    const user = useUser()
 
     const {name,
         brewery_type,
@@ -25,6 +31,7 @@ return <div className="card">
         <div>{country}</div>
     </div>
     {website_url && <a href={website_url}>Website</a>}
+    {user ? <ActionPanel data={data} /> : ''}
 </div>
 }
 

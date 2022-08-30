@@ -9,12 +9,22 @@ const BreweryResults = () => {
 
     const data = useSelector(state => state.lastApiResponse)
 
-    return <div className="cards">
-        {data ? data.map(brewery => <BreweryCard
-            data={brewery}
-            key={brewery.id} />)
-            : 'Here will be results'}
-    </div>
+    if (data) {
+        if (data.length === 0) {
+            return <p>Sorry, no registered breweries in this city!</p>
+        } else {
+            return (
+                <div className="cards">
+                    {data.map(brewery => <BreweryCard
+                        data={brewery}
+                        key={brewery.id} />
+                    )}
+                </div>
+            )
+        }
+    } else {
+        <p>Come on, search for breweries!</p>
+    }
 }
 
 export default BreweryResults
