@@ -27,11 +27,6 @@ const useSave = () => {
     const url = 'http://127.0.0.1:3010/save'
 
     if (shouldSave) {
-        // DEBUG
-        console.log("Trying to save most current state to store.json");
-        console.log("State to save:");
-        console.log(state);
-
         fetch(url, {
             method: "post",
             headers: {

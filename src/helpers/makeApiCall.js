@@ -32,6 +32,12 @@ const makeApiCall = ({
 
             url += `?by_city=${underscoreEncodedCity}&by_type=${params.type}`
         }
+        break;
+
+        case 'by_id': {
+            url += `/${params.id}`
+        }
+        break;
 
         default:
             break;
