@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom';
 import useUser from '../../hooks/useUser';
 import useFetchBrewery from '../../hooks/useFetchBrewery';
 import ActionPanel from '../ActionPanel/ActionPanel';
+import Comments from '../Comments/Comments';
 
 const BreweryDetails = () => {
 
@@ -49,6 +50,7 @@ const BreweryDetails = () => {
         <div>API-ID: {id}</div>
         {website_url && <a href={website_url}>Website</a>}
         {user && loadedData ? <ActionPanel data={loadedData} /> : ''}
+        <Comments id={id}/>
     </div>
 }
 

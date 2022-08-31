@@ -20,6 +20,7 @@ const preloadedState = {
         breweries: [
             {
                 id: 'string',
+                name: 'name',
                 isFavorite: false,
                 rating: -1,
                 comment: ''

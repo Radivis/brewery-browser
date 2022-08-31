@@ -56,7 +56,7 @@ const NavBar = () => {
             <div className={isMenuActive ? 'menu-items menu-items-slide-in' : 'menu-items'}>
                 <li><Link to="/">Search</Link></li>
                 <li><Link to="/favorites">Favorites</Link></li>
-                <li><Link to="/">Rankings</Link></li>
+                <li><Link to="/rankings">Rankings</Link></li>
                 <li><Link to="/">Contact</Link></li>
             </div>
         </div>

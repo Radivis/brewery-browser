@@ -1,7 +1,7 @@
 import deepCopy from "../helpers/deepCopy"
 
 // Helper function to store another brewery in a user object
-const addBrewery = (user, breweryId) => {
+const addBreweryIfNotRegisteredYet = (user, breweryId) => {
     const registeredBreweryIds = user.breweries.map(brewery => brewery.id)
     const brewery = {
         id: breweryId,
@@ -11,12 +11,13 @@ const addBrewery = (user, breweryId) => {
     }
     if (!registeredBreweryIds.includes(breweryId)) {
         user.breweries.push(brewery)
+
+        // Return the new brewery for further manipulation
         return brewery
     } else {
         // Indicate that the brewery was already registered in the user object
         return null
     }
-
 }
 
 const reducer = (state, action) => {
@@ -115,26 +116,12 @@ const reducer = (state, action) => {
             const currentUserId = newState.currentUserId
             const currentUser = newState.users.find(user => user.id === currentUserId)
 
-            let brewery = addBrewery(currentUser, action.id)
+            let brewery = addBreweryIfNotRegisteredYet(currentUser, action.id)
 
             // If the brewery was already registed, get its data from state 
             if (!brewery) brewery = currentUser.breweries.find(brewery => brewery.id === action.id)
 
             brewery.isFavorite = !brewery.isFavorite
-
-            // const registeredBreweryIds = currentUser.breweries.map(brewery => brewery.id)
-            // if (!registeredBreweryIds.includes(action.id)) {
-            //     const newBrewery = {
-            //         id: action.id,
-            //         isFavorite: true,
-            //         rating: -1,
-            //         comment: ''
-            //     }
-            //     currentUser.breweries.push(newBrewery)
-            // } else {
-            //     const updatedBrewery = currentUser.breweries.find(brewery => brewery.id === action.id)
-            //     updatedBrewery.isFavorite = !updatedBrewery.isFavorite
-            // }
 
             newState.shouldSave = true
             
@@ -148,7 +135,7 @@ const reducer = (state, action) => {
                 const currentUserId = newState.currentUserId
                 const currentUser = newState.users.find(user => user.id === currentUserId)
 
-                let brewery = addBrewery(currentUser, action.id)
+                let brewery = addBreweryIfNotRegisteredYet(currentUser, action.id)
 
                 // If the brewery was already registed, get its data from state 
                 if (!brewery) brewery = currentUser.breweries.find(brewery => brewery.id === action.id)
@@ -167,7 +154,7 @@ const reducer = (state, action) => {
                 const currentUserId = newState.currentUserId
                 const currentUser = newState.users.find(user => user.id === currentUserId)
                 
-                let brewery = addBrewery(currentUser, action.id)
+                let brewery = addBreweryIfNotRegisteredYet(currentUser, action.id)
 
                 // If the brewery was already registed, get its data from state 
                 if (!brewery) brewery = currentUser.breweries.find(brewery => brewery.id === action.id)
