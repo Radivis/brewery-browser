@@ -1,9 +1,9 @@
-import React, { useReducer } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React from 'react';
+import { useDispatch } from 'react-redux';
 
-import deepCopy from '../../helpers/deepCopy';
 import useUser from '../../hooks/useUser';
 import useSave from '../../hooks/useSave';
+import useRatingReducer from './useRatingReducer';
 
 import './Rating.css'
 
@@ -18,69 +18,7 @@ const Rating = ({ id }) => {
 
     const numberOfStars = 5
 
-    // Load rating from redux store, if it exists
-    const initialRating = useSelector(state =>{
-        const currentUser = state.users.find(_user => _user.id === user.id)
-        const brewery = currentUser.breweries.find(brewery => brewery.id === id)
-
-        if (brewery) return brewery.rating
-        else return -1
-    })
-
-    /* Takes an array of integers and fills the first "index" entries with true
-    Note that the upper index is inclusive!
-    */
-    const fillWithTrueUpTo = (arr, index) => {
-        for (let i=0; i <= index; i++) arr[i] = true
-    } 
-
-    const initialState = {
-        rating: initialRating || -1,
-        isFull: fillWithTrueUpTo(Array(numberOfStars).fill(false), initialRating -1),
-        isHovering: Array(numberOfStars).fill(false),
-    }
-
-    const ratingReducer = (state, action) => {
-        switch (action.type) {
-            case 'HOVER':
-                {
-                    const newIsHovering = initialState.isHovering
-                    newIsHovering[action.index] = true
-                    const newIsFull = initialState.isFull
-                    fillWithTrueUpTo(newIsFull,action.index)
-
-                    return {
-                        ...state,
-                        isHovering: newIsHovering,
-                        isFull: newIsFull
-                    }
-                }
-
-            case 'CLICK':
-                {
-                    const newState = deepCopy(state)
-                    newState.rating = action.index + 1
-
-                    return newState
-                }
-
-            case 'LEAVE':
-                const newIsHovering = initialState.isHovering
-                const newIsFull = initialState.isFull
-                fillWithTrueUpTo(newIsFull,state.rating - 1)
-
-                return {
-                    ...state,
-                    isHovering: newIsHovering,
-                    isFull: newIsFull
-                }
-
-            default:
-                return state
-        }
-    }
-
-    const [state, ratingDispatch] = useReducer(ratingReducer, initialState)
+    const [state, ratingDispatch] = useRatingReducer(id, numberOfStars)
 
     const handleClick = (ev, index) => {
         ratingDispatch({ type: 'CLICK', index })
