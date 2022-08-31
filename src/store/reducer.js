@@ -116,6 +116,21 @@ const reducer = (state, action) => {
         }
             break;
 
+            case 'ADD_COMMENT': {
+                const newState = deepCopy(state)
+
+                const currentUserId = newState.currentUserId
+                const currentUser = newState.users.find(user => user.id === currentUserId)
+
+                const currentBrewery = currentUser.breweries.find(brewery =>brewery.id === action.id)
+                currentBrewery.comment = action.comment
+
+                newState.shouldSave = true
+
+                return newState
+            }
+            break;
+
             case 'RATE' : {
                 const newState = deepCopy(state)
 

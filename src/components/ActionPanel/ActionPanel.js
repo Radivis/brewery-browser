@@ -14,6 +14,7 @@ import useUser from '../../hooks/useUser';
 import useSave from '../../hooks/useSave';
 
 import './ActionPanel.css'
+import CommentComposer from '../CommentComposer/CommentComposer';
 
 const ActionPanel = ({ data }) => {
     // Save brewery data of user after each action
@@ -33,6 +34,7 @@ const ActionPanel = ({ data }) => {
     })
 
     const [hoverFavorite, setHoverFavorite] = useState(false)
+    const [isComposerActive, setIsComposerActive] = useState(false)
 
 
     const handleFavorite = () => {
@@ -43,7 +45,12 @@ const ActionPanel = ({ data }) => {
         })
     }
 
-    return <div className="action-panel">
+    const toggleComposer = () => {
+        setIsComposerActive(!isComposerActive)
+    }
+
+    return <>
+    <div className="action-panel">
         <button className="favorite-button transparent"
             onClick={handleFavorite}
             onMouseEnter={() => setHoverFavorite(true)}
@@ -55,14 +62,19 @@ const ActionPanel = ({ data }) => {
                 <i className={hoverFavorite ? "fa-solid fa-heart-circle-plus" : "fa-regular fa-heart"}></i>
             )}
         </button>
-        <Rating id={id}/>
-        <i className="fa-solid fa-pen"></i>
+        <Rating id={id} />
+        <button className="comment-button transparent"
+        onClick={toggleComposer}>
+            <i className="fa-solid fa-pen"></i>
+        </button>
         <button className="transparent details-button">
             <Link to={`/details/${id}`}>
                 <i className="fa-solid fa-circle-info"></i>
             </Link>
         </button>
     </div >
+    {isComposerActive && <CommentComposer id={id} toggleComposer={toggleComposer}/>}
+    </>
 }
 
 export default ActionPanel

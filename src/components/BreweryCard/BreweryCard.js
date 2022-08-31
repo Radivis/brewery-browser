@@ -4,6 +4,7 @@ of a brewery in a card */
 import React, { useState } from "react";
 
 import ActionPanel from "../ActionPanel/ActionPanel";
+import Comments from "../Comments/Comments";
 import useUser from "../../hooks/useUser";
 import useFetchBrewery from "../../hooks/useFetchBrewery";
 
@@ -48,6 +49,7 @@ const BreweryCard = ({ data }) => {
         </div>
         {website_url && <a href={website_url}>Website</a>}
         {user ? <ActionPanel data={data} /> : ''}
+        <Comments />
     </div>
 }
 
