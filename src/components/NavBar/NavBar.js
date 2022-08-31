@@ -57,7 +57,7 @@ const NavBar = () => {
                 <li><Link to="/">Search</Link></li>
                 <li><Link to="/favorites">Favorites</Link></li>
                 <li><Link to="/rankings">Rankings</Link></li>
-                <li><Link to="/">Contact</Link></li>
+                <li><Link to="/contact">Contact</Link></li>
             </div>
         </div>
     </nav>
