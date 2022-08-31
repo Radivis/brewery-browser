@@ -16,6 +16,14 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: hsl(30, 100%, 90%);;
+}
+
+button {
+  background-color: hsl(30, 100%, 80%);
+  border-radius: 10px;
+  font-size: large;
+  
 }
 
 code {
@@ -25,5 +33,13 @@ code {
 
 form {
   margin: 5px;
+  font-size: large;
+}
+
+input, select {
+  background-color: hsl(30, 100%, 80%);
+  border-radius: 5px;
+  margin: 5px;
+  font-size: large;
 }
 

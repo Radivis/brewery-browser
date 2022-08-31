@@ -2,6 +2,7 @@
 of a brewery in a card */
 
 import React, { useState } from "react";
+import { useSelector } from "react-redux";
 
 import ActionPanel from "../ActionPanel/ActionPanel";
 import Comments from "../Comments/Comments";
@@ -13,6 +14,19 @@ import './BreweryCard.css';
 const BreweryCard = ({ data }) => {
 
     const user = useUser()
+
+    const favoriteStatus = useSelector(state => {
+        const currentUser = state.users.find(_user => _user.id === user.id)
+        const currentBrewery = currentUser.breweries.find(brewery => brewery.id === data.id)
+
+        if (currentBrewery) {
+             if (currentBrewery.isFavorite) return 1 // favorited
+             else return -1 // interacted, but not favorited
+        } else {
+            // untouched
+            return 0
+        }
+    })
 
     const [loadedData, setLoadedData] = useState(null)
 
@@ -39,13 +53,15 @@ const BreweryCard = ({ data }) => {
         setLoadedData
     })
 
-    return <div className="card">
+    return <div className={favoriteStatus === 0 ?
+    "card" // regular card
+    :
+    favoriteStatus === 1 ? "card card-favorited" : "card card-interacted"}>
         <h3>{name}</h3>
         <div>Type: {brewery_type}</div>
         <div className="address">
             <div>{street}</div>
-            <div>{city}, {state}</div>
-            <div>{country}</div>
+            <div>{city}, {state? `${state},` : ''} {country}</div>
         </div>
         {website_url && <a href={website_url}>Website</a>}
         {user ? <ActionPanel data={data} /> : ''}

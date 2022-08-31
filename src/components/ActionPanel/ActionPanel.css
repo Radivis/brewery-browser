@@ -7,6 +7,12 @@
     border: 0;
 }
 
+.comment-button{
+    font-size: larger;
+    width: 40px;
+    cursor: pointer;
+}
+
 .favorite-button {
     font-size: larger;
     width: 40px;
