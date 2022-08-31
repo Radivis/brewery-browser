@@ -16,7 +16,7 @@ import useSave from '../../hooks/useSave';
 import './ActionPanel.css'
 import CommentComposer from '../CommentComposer/CommentComposer';
 
-const ActionPanel = ({ data }) => {
+const ActionPanel = ({ data, showDetailsLink = true }) => {
     // Save brewery data of user after each action
     useSave()
 
@@ -67,11 +67,11 @@ const ActionPanel = ({ data }) => {
         onClick={toggleComposer}>
             <i className="fa-solid fa-pen"></i>
         </button>
-        <button className="transparent details-button">
+        {showDetailsLink && <button className="transparent details-button">
             <Link to={`/details/${id}`}>
                 <i className="fa-solid fa-circle-info"></i>
             </Link>
-        </button>
+        </button>}
     </div >
     {isComposerActive && <CommentComposer id={id} toggleComposer={toggleComposer}/>}
     </>

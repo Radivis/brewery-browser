@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
 
 import useUser from '../../hooks/useUser';
@@ -32,6 +32,7 @@ const BreweryDetails = () => {
         // updated_at,
         city,
         postal_code,
+        phone,
         website_url
     } = loadedData || {} // variables remain undefined, if data not yet loaded
 
@@ -47,10 +48,11 @@ const BreweryDetails = () => {
             <div>{county_province}</div>
             <div>{country}</div>
         </div>
+        {phone && <div>Phone: {phone}</div>}
         <div>API-ID: {id}</div>
         {website_url && <a href={website_url}>Website</a>}
-        {user && loadedData ? <ActionPanel data={loadedData} /> : ''}
-        <Comments id={id}/>
+        {user && loadedData ? <ActionPanel data={loadedData} showDetailsLink={false} /> : ''}
+        <Comments id={id} />
     </div>
 }
 

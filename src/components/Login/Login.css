@@ -1,0 +1,15 @@
+.form {
+    border: 2px solid hsl(30, 50%, 25%);
+    border-radius: 10px;
+    padding: 5px;
+}
+
+.form-error {
+    border: 2px solid hsl(0, 100%, 50%);
+    border-radius: 10px;
+}
+
+.form-error-message {
+    color:hsl(0, 100%, 50%);
+    font-size: larger;
+}

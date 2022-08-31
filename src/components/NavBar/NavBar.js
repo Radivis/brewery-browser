@@ -42,7 +42,7 @@ const NavBar = () => {
                     </div>
                 </div>
                 <div className="logo">
-                    <h1>Brewery Browser</h1>
+                    <h1><Link to="/">Brewery Browser</Link></h1>
                 </div>
                 <div className="login-container">
                     {currentUser ? `Hello, ${currentUser.username}!` : "Not logged in"}
@@ -63,10 +63,10 @@ const NavBar = () => {
                     : ''}</div>
             </div>
             <div className={isMenuActive ? 'menu-items menu-items-slide-in' : 'menu-items'}>
-                <li><Link to="/">Search</Link></li>
-                <li><Link to="/favorites">Favorites</Link></li>
-                <li><Link to="/rankings">Rankings</Link></li>
-                <li><Link to="/contact">Contact</Link></li>
+                <li><Link to="/"><i class="fa-solid fa-magnifying-glass"></i> Search</Link></li>
+                <li><Link to="/favorites"><i class="fa-solid fa-star"></i> Favorites</Link></li>
+                <li><Link to="/rankings"><i class="fa-solid fa-ranking-star"></i> Rankings</Link></li>
+                <li><Link to="/contact"><i class="fa-solid fa-id-card"></i> Contact</Link></li>
             </div>
         </div>
     </nav>
