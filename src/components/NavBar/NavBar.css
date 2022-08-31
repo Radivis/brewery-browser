@@ -167,6 +167,18 @@ see also: https://alvarotrigo.com/blog/hamburger-menu-css/ */
   transform: rotate(-45deg);
 }
 
-/* .hamburger-container input[type="checkbox"]:checked~.logo {
-  display: none;
-} */
+.data-server-connection{
+  position: absolute;
+  top: 10px;
+  left: 80px;
+}
+
+.data-server-indicator{
+  font-size: x-large;
+  color: hsl(0, 100%, 50%)
+}
+
+.error-message {
+  display: inline-block;
+  color: hsl(0, 100%, 50%)
+}

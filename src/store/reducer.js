@@ -106,7 +106,10 @@ const reducer = (state, action) => {
             break;
 
         case 'IMPORT_STATE_FROM_SERVER': {
-            return action.data
+            const state = action.data
+            state.isBackendServerOnline = true
+
+            return state
         }
             break;
 
@@ -124,47 +127,47 @@ const reducer = (state, action) => {
             brewery.isFavorite = !brewery.isFavorite
 
             newState.shouldSave = true
-            
+
             return newState
         }
             break;
 
-            case 'ADD_COMMENT': {
-                const newState = deepCopy(state)
+        case 'ADD_COMMENT': {
+            const newState = deepCopy(state)
 
-                const currentUserId = newState.currentUserId
-                const currentUser = newState.users.find(user => user.id === currentUserId)
+            const currentUserId = newState.currentUserId
+            const currentUser = newState.users.find(user => user.id === currentUserId)
 
-                let brewery = addBreweryIfNotRegisteredYet(currentUser, action.id)
+            let brewery = addBreweryIfNotRegisteredYet(currentUser, action.id)
 
-                // If the brewery was already registed, get its data from state 
-                if (!brewery) brewery = currentUser.breweries.find(brewery => brewery.id === action.id)
+            // If the brewery was already registed, get its data from state 
+            if (!brewery) brewery = currentUser.breweries.find(brewery => brewery.id === action.id)
 
-                brewery.comment = action.comment
+            brewery.comment = action.comment
 
-                newState.shouldSave = true
+            newState.shouldSave = true
 
-                return newState
-            }
+            return newState
+        }
             break;
 
-            case 'RATE' : {
-                const newState = deepCopy(state)
+        case 'RATE': {
+            const newState = deepCopy(state)
 
-                const currentUserId = newState.currentUserId
-                const currentUser = newState.users.find(user => user.id === currentUserId)
-                
-                let brewery = addBreweryIfNotRegisteredYet(currentUser, action.id)
+            const currentUserId = newState.currentUserId
+            const currentUser = newState.users.find(user => user.id === currentUserId)
 
-                // If the brewery was already registed, get its data from state 
-                if (!brewery) brewery = currentUser.breweries.find(brewery => brewery.id === action.id)
+            let brewery = addBreweryIfNotRegisteredYet(currentUser, action.id)
 
-                brewery.rating = action.rating
+            // If the brewery was already registed, get its data from state 
+            if (!brewery) brewery = currentUser.breweries.find(brewery => brewery.id === action.id)
 
-                newState.shouldSave = true
+            brewery.rating = action.rating
 
-                return newState
-            }
+            newState.shouldSave = true
+
+            return newState
+        }
             break;
 
 

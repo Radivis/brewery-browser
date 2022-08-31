@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import useLoad from "../../hooks/useLoad";
 
 import './NavBar.css';
+import { hasSelectionSupport } from "@testing-library/user-event/dist/utils";
 
 const NavBar = () => {
 
@@ -51,7 +52,15 @@ const NavBar = () => {
                             : <Link to="/login"><button>Login</button></Link>}
                     </div>
                 </div>
-                <div>{!isBackendServerOnline ? <i className="fa-solid fa-database"></i> : ''}</div>
+                <div className="data-server-connection">{!isBackendServerOnline ?
+                    <div>
+                        <i className="fa-solid fa-database data-server-indicator"></i>
+                        <div className="error-message">
+                            No connection to data server! <br />
+                            Please (re)start server and refresh the page.
+                        </div>
+                    </div>
+                    : ''}</div>
             </div>
             <div className={isMenuActive ? 'menu-items menu-items-slide-in' : 'menu-items'}>
                 <li><Link to="/">Search</Link></li>
