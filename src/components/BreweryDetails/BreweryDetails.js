@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 import useUser from '../../hooks/useUser';
 import useFetchBrewery from '../../hooks/useFetchBrewery';
@@ -11,6 +12,19 @@ const BreweryDetails = () => {
     const user = useUser()
 
     const { id } = useParams()
+
+    const favoriteStatus = useSelector(state => {
+        const currentUser = state.users.find(_user => _user.id === user.id)
+        const currentBrewery = currentUser.breweries.find(brewery => brewery.id === id)
+
+        if (currentBrewery) {
+             if (currentBrewery.isFavorite) return 1 // favorited
+             else return -1 // interacted, but not favorited
+        } else {
+            // untouched
+            return 0
+        }
+    })
 
     const [loadedData, setLoadedData] = useState(null)
 
@@ -39,7 +53,10 @@ const BreweryDetails = () => {
     // DEBUG
     console.log(loadedData);
 
-    return <div className="card">
+    return <div className={favoriteStatus === 0 ?
+        "card" // regular card
+        :
+        favoriteStatus === 1 ? "card card-favorited" : "card card-interacted"}>
         <h3>{name}</h3>
         <div>Type: {brewery_type}</div>
         <div className="address">

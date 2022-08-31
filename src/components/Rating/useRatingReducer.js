@@ -9,11 +9,13 @@ const useRatingReducer = (id, numberOfStars) => {
     const user = useUser()
 
     /* Takes an array of integers and fills the first "index" entries with true
+    the other entries are filled with false
     Note that the upper index is inclusive!
     */
-    const fillWithTrueUpTo = (arr, index) => {
-        if (index > 0) {
+    const fillWithTrueUpToIndexThenFalse = (arr, index) => {
+        if (index => 0) {
             for (let i = 0; i <= index; i++) arr[i] = true
+            for (let i = index + 1; i < arr.length; i++) arr[i] = false
         }
         return arr
     }
@@ -31,7 +33,7 @@ const useRatingReducer = (id, numberOfStars) => {
 
     const initialState = {
         rating: initialRating,
-        isFull: fillWithTrueUpTo(falseArray, initialRating - 1),
+        isFull: fillWithTrueUpToIndexThenFalse(falseArray, initialRating - 1),
         isHovering: falseArray,
     }
 
@@ -42,7 +44,7 @@ const useRatingReducer = (id, numberOfStars) => {
                     const newIsHovering = initialState.isHovering
                     newIsHovering[action.index] = true
                     const newIsFull = initialState.isFull
-                    fillWithTrueUpTo(newIsFull, action.index)
+                    fillWithTrueUpToIndexThenFalse(newIsFull, action.index)
 
                     return {
                         ...state,
@@ -62,7 +64,7 @@ const useRatingReducer = (id, numberOfStars) => {
             case 'LEAVE':
                 const newIsHovering = initialState.isHovering
                 const newIsFull = initialState.isFull
-                fillWithTrueUpTo(newIsFull, state.rating - 1)
+                fillWithTrueUpToIndexThenFalse(newIsFull, state.rating - 1)
 
                 return {
                     ...state,
