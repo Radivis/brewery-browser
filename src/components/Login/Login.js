@@ -15,18 +15,13 @@ const Login = () => {
     const [password, setPassword] = useState("")
     const [formErrorMessage, setFormErrorMessage] = useState("")
 
-    /* map each state variable name to the corresponding setter
+    /* map each input state variable name to the corresponding setter
     , so that I don't need to use conditional statements to get the right setter */
     const setterMap = new Map()
     setterMap.set('username', setUsername)
     setterMap.set('password', setPassword)
 
     const validateForm = () => {
-        if (username.length < 4) {
-            setFormErrorMessage("User name must have at least 4 characters")
-            return false
-        }
-
         if (!usernames.includes(username)) {
             // Username doesn't exist!
             setFormErrorMessage("Login failed")
