@@ -1,22 +1,24 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 
-const Comments = ({id}) => {
-    // First iterate through all users to get all comments for this brewery
-    const users = useSelector(state => state.users)
+const Comments = ({ id }) => {
+    const userComments = useSelector(state => {
+        // First get all users to iterate over them
+        const users = state.users
+        
+        // Add any comment any user has made on this brewery
+        const userComments = []
 
-    // Extract all comments that any user has written
-    const userComments = []
+        users.forEach(user => {
+            const brewery = user.breweries.find(brewery => brewery.id === id)
 
-    users.forEach(user => {
-        const brewery = user.breweries.find(brewery => brewery.id === id)
+            if (brewery && brewery.comment) {
+                userComments.push({ user: user.username, comment: brewery.comment })
+            }
+        })
 
-        if (brewery && brewery.comment) {
-            userComments.push({user, comment: brewery.comment})
-        }
+        return userComments
     })
-
-    // PROBLEM: This component isn't updated. Maybe the data structure needs to be changed to make this work!
 
     if (userComments.length > 0) {
         return <div className="comments">

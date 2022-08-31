@@ -49,7 +49,7 @@ const BreweryCard = ({ data }) => {
         </div>
         {website_url && <a href={website_url}>Website</a>}
         {user ? <ActionPanel data={data} /> : ''}
-        <Comments />
+        <Comments id={id}/>
     </div>
 }
 
