@@ -1,11 +1,14 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 import useSave from "../../hooks/useSave";
 
 const Register = () => {
     // Save user data after registration
     useSave()
+
+    const navigate = useNavigate()
 
     const dispatch = useDispatch()
 
@@ -69,6 +72,9 @@ const Register = () => {
             setUsername("")
             setPassword("")
             setPasswordRepeat("")
+
+            // Go to default route
+            navigate('/')
         }
     }
 
