@@ -26,6 +26,7 @@ const BrewerySearch = () => {
 
     const [city, setCity] = useState('')
     const [type, setType] = useState('')
+    const [results, setResults] = useState(null)
 
     /* map each state variable name to the corresponding setter
     , so that I don't need to use conditional statements to get the right setter */
@@ -61,7 +62,6 @@ const BrewerySearch = () => {
                 params: { city }
             })
         }
-
     }
 
     return <div>

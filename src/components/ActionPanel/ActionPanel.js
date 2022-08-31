@@ -9,6 +9,7 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
+import Rating from '../Rating/Rating';
 import useUser from '../../hooks/useUser';
 import useSave from '../../hooks/useSave';
 
@@ -54,11 +55,11 @@ const ActionPanel = ({ data }) => {
                 <i className={hoverFavorite ? "fa-solid fa-heart-circle-plus" : "fa-regular fa-heart"}></i>
             )}
         </button>
-        <i className="fa-solid fa-star"></i>
+        <Rating id={id}/>
         <i className="fa-solid fa-pen"></i>
         <button className="transparent details-button">
             <Link to={`/details/${id}`}>
-                <i class="fa-solid fa-circle-info"></i>
+                <i className="fa-solid fa-circle-info"></i>
             </Link>
         </button>
     </div >

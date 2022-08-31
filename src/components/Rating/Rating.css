@@ -1,0 +1,10 @@
+.rating {
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.rating-star {
+    font-size: larger;
+    cursor: pointer;
+    padding: 2px;
+}
