@@ -1,5 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
+import Plot from 'react-plotly.js';
 import deepCopy from '../../helpers/deepCopy';
 
 const Rankings = () => {
@@ -44,18 +45,41 @@ const Rankings = () => {
 
 
     // Sort the rankingData by averageRating after making a deep copy
-    const sortedRankingData = deepCopy(rankingData)
+    let sortedRankingData = deepCopy(rankingData)
     sortedRankingData.sort((a,b) => b.averageRating - a.averageRating)
 
-    console.log(sortedRankingData);
+    // Shorten rankingData to Top 3
+    sortedRankingData = sortedRankingData.slice(0,3)
 
     return <div>
         <h2>Highest average ratings</h2>
         <ol>
-            {sortedRankingData.map(brewery => <li>
-                {brewery.name}: {brewery.averageRating} (total stars: {brewery.totalRating})
+            {sortedRankingData.map(brewery => <li key={brewery.id}>
+                {brewery.name}: <strong>{brewery.averageRating}</strong>
+                {'\t'}(total ratings: {brewery.ratings.length}, total stars: {brewery.totalRating})
             </li>)}
         </ol>
+        <Plot 
+            data = {[
+                {
+                    type: 'bar',
+                    x: sortedRankingData.map(brewery => brewery.name),
+                    y: sortedRankingData.map(brewery => brewery.averageRating),
+                    marker: {color: 'hsl(45, 80%, 40%)'}
+                }
+            ]}
+            layout= { {width: 400,
+                height: 600, 
+                title: 'Highest average ratings',
+                // Needs large margins for long brewery names!
+                margin: {
+                    b: 300,
+                    l: 30,
+                    r: 170
+                },
+                font: 'Arima, "Open Sans", verdana, arial, sans-serif'
+            }}
+            />
     </div>
 }
 
