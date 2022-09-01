@@ -7,7 +7,7 @@ see also: https://alvarotrigo.com/blog/hamburger-menu-css/ */
 
 .container {
   max-width: 1050px;
-  width: 90%;
+  width: 100%;
   margin: auto;
 }
 
@@ -17,25 +17,21 @@ see also: https://alvarotrigo.com/blog/hamburger-menu-css/ */
 }
 
 .nav-container {
-  display: flex;
-  flex-direction: row;
-  justify-items: center;
-  justify-content: space-between;
-  align-items: center;
-  height: 62px;
+  height: 70px;
 }
+
+/* Navbar header code */
 
 .navbar-header {
   display: flex;
+  width: 100%;
+  /* Leave space for the hamburger icon on the left, because it's positioned absolutely! */
+  margin-left: 60px;
   flex-direction: row;
   flex-wrap: nowrap;
   justify-items: center;
   justify-content: space-between;
-  align-items: center;
-}
-
-.navbar .menu-items {
-  display: flex;
+  align-items: flex-start;
 }
 
 .navbar .nav-container li {
@@ -44,29 +40,64 @@ see also: https://alvarotrigo.com/blog/hamburger-menu-css/ */
 
 .navbar .nav-container a {
   text-decoration: none;
-  color: #0e2431;
+  color: hsl(30, 50%, 15%);
   font-weight: 500;
   font-size: 1.2rem;
   padding: 0.7rem;
 }
 
-.navbar .nav-container a:hover {
-  font-weight: bolder;
+.navbar .nav-container {
+  height: 70px;
 }
 
-.nav-container {
-  display: block;
-  position: relative;
-  height: 60px;
+.logo {
+  width: 100px;
+  flex-grow: 0;
+  font-size: 1.2rem;
+  color: hsl(30, 50%, 15%);
+  margin: 0;
+  margin-right: 5px;
 }
+
+.logo h1 {
+  line-height: 1.3rem;
+  margin-top: 10px;
+}
+
+.login-container {
+  flex-grow: 1;
+}
+
+/* Error indicator and message code */
+
+.data-server-connection{
+  flex-grow: 1;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.data-server-indicator{
+  font-size: x-large;
+  color: hsl(0, 100%, 50%);
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.error-message {
+  font-size: small;
+  color: hsl(0, 100%, 50%)
+}
+
+/* Hamburger Icon Code */
 
 .nav-container .checkbox {
   position: absolute;
   display: block;
-  height: 32px;
-  width: 32px;
-  top: 20px;
-  left: 20px;
+  height: 42px;
+  width: 42px;
+  top: 15px;
+  left: 10px;
   z-index: 5;
   opacity: 0;
   cursor: pointer;
@@ -107,6 +138,20 @@ see also: https://alvarotrigo.com/blog/hamburger-menu-css/ */
   transition: transform 0.4s ease-in-out;
 }
 
+.hamburger-container input[type="checkbox"]:checked~.hamburger-lines .line1 {
+  transform: rotate(45deg);
+}
+
+.hamburger-container input[type="checkbox"]:checked~.hamburger-lines .line2 {
+  transform: scaleY(0);
+}
+
+.hamburger-container input[type="checkbox"]:checked~.hamburger-lines .line3 {
+  transform: rotate(-45deg);
+}
+
+/* Menu item code */
+
 .navbar .menu-items {
   position: absolute;
   top: 0px;
@@ -131,54 +176,10 @@ see also: https://alvarotrigo.com/blog/hamburger-menu-css/ */
   background-image: radial-gradient(closest-side at 50% 50%, hsla(60, 100%, 90%, 1), hsla(60, 100%, 80%, 0.75), hsla(60, 100%, 80%, 0));
 }
 
-.logo {
-  position: absolute;
-  top: 0px;
-  right: 215px;
-  font-size: 1.2rem;
-  color: #0e2431;
-  margin: 0;
-  padding: 0;
-}
-
-.logo h1 {
-  line-height: 0.8rem;
-}
-
-.login-container {
-  position: absolute;
-  top: 5px;
-  right: 5px;
+.navbar .menu-items a:hover {
+  font-weight: bolder;
 }
 
 .nav-container .menu-items-slide-in {
   transform: translateX(0);
-}
-
-.hamburger-container input[type="checkbox"]:checked~.hamburger-lines .line1 {
-  transform: rotate(45deg);
-}
-
-.hamburger-container input[type="checkbox"]:checked~.hamburger-lines .line2 {
-  transform: scaleY(0);
-}
-
-.hamburger-container input[type="checkbox"]:checked~.hamburger-lines .line3 {
-  transform: rotate(-45deg);
-}
-
-.data-server-connection{
-  position: absolute;
-  top: 10px;
-  left: 80px;
-}
-
-.data-server-indicator{
-  font-size: x-large;
-  color: hsl(0, 100%, 50%)
-}
-
-.error-message {
-  display: inline-block;
-  color: hsl(0, 100%, 50%)
 }

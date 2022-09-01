@@ -7,6 +7,7 @@ import './index.css';
 import store from './store/store';
 import BreweryRouter from './components/BreweryRouter/BreweryRouter';
 import NavBar from './components/NavBar/NavBar';
+import PageContainer from './components/PageContainer/PageContainer';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -14,7 +15,9 @@ root.render(
     <Provider store={store}>
       <BrowserRouter>
         <NavBar />
-        <BreweryRouter />
+        <PageContainer>
+          <BreweryRouter />
+        </PageContainer>
       </BrowserRouter>
     </Provider>
   </React.StrictMode>
