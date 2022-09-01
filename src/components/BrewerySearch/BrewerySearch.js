@@ -25,7 +25,7 @@ const BrewerySearch = () => {
         'planning',
         'bar',
         'contract',
-        'proprietor',
+        'proprieter',
         'closed'
     ]
 

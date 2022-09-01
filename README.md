@@ -1,70 +1,61 @@
-# Getting Started with Create React App
+# Brewery Browser
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Requirements
 
-## Available Scripts
+Have node.js installed on your device.
 
-In the project directory, you can run:
+## Installation
+
+### 1) Install necessary node modules
+
+Open a console and move to the project directory. Then type:
+
+### `npm install`
+
+### 2) Start user data server
+
+If you want to use the app with user data, you need to start the user data server first:
+
+### `node src/backend/server.js`
+
+The data server runs on port 3010 by default. If that happens to be used already, you need to edit port constant in the server.js file first.
+
+### 3) Start app
+
+Finally, start the app with:
 
 ### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+A new browser tab in your default browser should open now.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## App description
 
-### `npm test`
+The Brewery Browser uses data from the API of Open Brewery DB.
+Users can search for breweries via the search form.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Users can register a user account and then
 
-### `npm run build`
+- favorite
+- rate
+- comment
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+a brewery.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+The top 3 breweries can be found on the ranking page.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Default data
 
-### `npm run eject`
+The user data is stored in the file `src/backend/store.json`.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+For now the passwords are stored in plain text(!), so you can look them up there.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+If you want to start with a user with a decent amount of data, pick "Test4". The password is "Test4", too.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Passwords for newly registered users need to be at least 8 characters long.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Remarks
 
-## Learn More
+This project has been the result of a React "bootcamp" course by AlfaTraining.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## License
+MIT, see LICENSE.txt.
