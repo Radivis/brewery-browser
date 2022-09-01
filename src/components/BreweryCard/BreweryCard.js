@@ -16,6 +16,8 @@ const BreweryCard = ({ data }) => {
     const user = useUser()
 
     const favoriteStatus = useSelector(state => {
+        if (!user) return 0
+        
         const currentUser = state.users.find(_user => _user.id === user.id)
         const currentBrewery = currentUser.breweries.find(brewery => brewery.id === data.id)
 

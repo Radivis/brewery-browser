@@ -167,7 +167,8 @@ see also: https://alvarotrigo.com/blog/hamburger-menu-css/ */
   transition: transform 0.5s ease-in-out;
   text-align: center;
   background:
-    linear-gradient(to right,  hsla(60, 100%, 80%, 0), hsla(60, 100%, 80%, 0.5), hsla(60, 100%, 80%, 0));
+    linear-gradient(to right,  hsla(0, 0%, 0%, 0.0), hsla(0, 0%, 0%, 0.5), hsla(0, 0%, 0%, 0.0));
+    /* linear-gradient(to right,  hsla(60, 100%, 80%, 0), hsla(60, 100%, 80%, 0.5), hsla(60, 100%, 80%, 0)); */
 }
 
 .navbar .menu-items li {

@@ -27,14 +27,14 @@ const NavBar = () => {
     }
 
     const handleChange = ev => {
-        setIsMenuActive(ev.target.checked)
+        setIsMenuActive(!isMenuActive)
     }
 
     return <nav className="navbar">
         <div className="container nav-container">
             <header className="navbar-header">
                 <div className="hamburger-container">
-                    <input className="checkbox" type="checkbox" name="" id="" onChange={handleChange} />
+                    <input className="checkbox" type="checkbox" name="" id="" checked={isMenuActive} onChange={handleChange} />
                     <div className="hamburger-lines">
                         <span className="line line1"></span>
                         <span className="line line2"></span>
@@ -65,10 +65,18 @@ const NavBar = () => {
                 )}
             </header>
             <main className={isMenuActive ? 'menu-items menu-items-slide-in' : 'menu-items'}>
-                <li><Link to="/"><i className="fa-solid fa-magnifying-glass"></i> Search</Link></li>
-                <li><Link to="/favorites"><i className="fa-solid fa-star"></i> Favorites</Link></li>
-                <li><Link to="/rankings"><i className="fa-solid fa-ranking-star"></i> Rankings</Link></li>
-                <li><Link to="/contact"><i className="fa-solid fa-id-card"></i> Contact</Link></li>
+                <li><Link to="/" onClick={() => setIsMenuActive(false)}>
+                    <i className="fa-solid fa-magnifying-glass"></i> Search
+                    </Link></li>
+                <li><Link to="/favorites" onClick={() => setIsMenuActive(false)}>
+                    <i className="fa-solid fa-star"></i> Favorites
+                    </Link></li>
+                <li><Link to="/rankings" onClick={() => setIsMenuActive(false)}>
+                    <i className="fa-solid fa-ranking-star"></i> Rankings</Link>
+                    </li>
+                <li><Link to="/contact" onClick={() => setIsMenuActive(false)}>
+                    <i className="fa-solid fa-id-card"></i> Contact</Link>
+                    </li>
             </main>
         </div>
     </nav>
