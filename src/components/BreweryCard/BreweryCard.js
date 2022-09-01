@@ -2,7 +2,7 @@
 of a brewery in a card */
 
 import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 import ActionPanel from "../ActionPanel/ActionPanel";
 import Comments from "../Comments/Comments";
@@ -21,7 +21,7 @@ const BreweryCard = ({ data }) => {
     const [loadedData, setLoadedData] = useState(null)
 
     // If data has been fetched from the API, overwrite the data from props!
-    if(loadedData) data = loadedData
+    if (loadedData) data = loadedData
 
     // Extract relevant data from the data object
     const {
@@ -44,18 +44,26 @@ const BreweryCard = ({ data }) => {
     })
 
     return <div className={favoriteStatus === 0 ?
-    "card" // regular card
-    :
-    favoriteStatus === 1 ? "card card-favorited" : "card card-interacted"}>
-        <h3>{name}</h3>
+        "card" // regular card
+        :
+        favoriteStatus === 1 ? "card card-favorited" : "card card-interacted"}>
+        <header>
+            <h3 className="inline-header">{name}</h3>
+            <button className="transparent details-button">
+                <Link to={`/details/${id}`}>
+                    <i className="fa-solid fa-circle-info"></i>
+                </Link>
+            </button>
+
+        </header>
         <div>Type: {brewery_type}</div>
         <div className="address">
             <div>{street}</div>
-            <div>{city}, {state? `${state},` : ''} {country}</div>
+            <div>{city}, {state ? `${state},` : ''} {country}</div>
         </div>
         {website_url && <a href={website_url}>Website</a>}
         {user ? <ActionPanel data={data} /> : ''}
-        <Comments id={id}/>
+        <Comments id={id} />
     </div>
 }
 

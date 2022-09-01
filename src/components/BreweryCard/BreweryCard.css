@@ -16,3 +16,7 @@
 .card-interacted {
     background-color: hsl(35, 77%, 61%);
 }
+
+.inline-header {
+    display: inline;
+}
