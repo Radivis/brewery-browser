@@ -40,8 +40,8 @@ const makeApiCall = ({
     fetch(url)
         .then(res => res.json())
         .then(data => {
-            // DEBUG
 
+            // DEBUG
             console.log("data from API call");
             console.log(data);
 

@@ -16,7 +16,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: hsl(30, 100%, 90%);;
+  background-color: hsl(30, 100%, 90%);
 }
 
 button {

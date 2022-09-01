@@ -107,7 +107,11 @@ const reducer = (state, action) => {
 
         case 'IMPORT_STATE_FROM_SERVER': {
             const state = action.data
+            // If the data could be imported, the server is definitely online
             state.isBackendServerOnline = true
+
+            // Don't start with an already logged in user!
+            state.currentUserId = -1
 
             return state
         }

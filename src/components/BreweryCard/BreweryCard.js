@@ -8,6 +8,7 @@ import ActionPanel from "../ActionPanel/ActionPanel";
 import Comments from "../Comments/Comments";
 import useUser from "../../hooks/useUser";
 import useFetchBrewery from "../../hooks/useFetchBrewery";
+import useFavoriteStatus from "../../hooks/useFavoriteStatus";
 
 import './BreweryCard.css';
 
@@ -15,20 +16,7 @@ const BreweryCard = ({ data }) => {
 
     const user = useUser()
 
-    const favoriteStatus = useSelector(state => {
-        if (!user) return 0
-        
-        const currentUser = state.users.find(_user => _user.id === user.id)
-        const currentBrewery = currentUser.breweries.find(brewery => brewery.id === data.id)
-
-        if (currentBrewery) {
-             if (currentBrewery.isFavorite) return 1 // favorited
-             else return -1 // interacted, but not favorited
-        } else {
-            // untouched
-            return 0
-        }
-    })
+    const favoriteStatus = useFavoriteStatus(data.id)
 
     const [loadedData, setLoadedData] = useState(null)
 

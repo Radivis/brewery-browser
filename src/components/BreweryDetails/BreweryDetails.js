@@ -4,8 +4,10 @@ import { useSelector } from 'react-redux';
 
 import useUser from '../../hooks/useUser';
 import useFetchBrewery from '../../hooks/useFetchBrewery';
+import useFavoriteStatus from '../../hooks/useFavoriteStatus';
 import ActionPanel from '../ActionPanel/ActionPanel';
 import Comments from '../Comments/Comments';
+import PageHeader from '../PageHeader/PageHeader';
 
 const BreweryDetails = () => {
 
@@ -13,18 +15,7 @@ const BreweryDetails = () => {
 
     const { id } = useParams()
 
-    const favoriteStatus = useSelector(state => {
-        const currentUser = state.users.find(_user => _user.id === user.id)
-        const currentBrewery = currentUser.breweries.find(brewery => brewery.id === id)
-
-        if (currentBrewery) {
-             if (currentBrewery.isFavorite) return 1 // favorited
-             else return -1 // interacted, but not favorited
-        } else {
-            // untouched
-            return 0
-        }
-    })
+    const favoriteStatus = useFavoriteStatus(id)
 
     const [loadedData, setLoadedData] = useState(null)
 
@@ -53,7 +44,9 @@ const BreweryDetails = () => {
     // DEBUG
     console.log(loadedData);
 
-    return <div className={favoriteStatus === 0 ?
+    return <>
+    <PageHeader title="Brewery Details" />
+    <div className={favoriteStatus === 0 ?
         "card" // regular card
         :
         favoriteStatus === 1 ? "card card-favorited" : "card card-interacted"}>
@@ -71,6 +64,9 @@ const BreweryDetails = () => {
         {user && loadedData ? <ActionPanel data={loadedData} showDetailsLink={false} /> : ''}
         <Comments id={id} />
     </div>
+    </>
+    
+
 }
 
 export default BreweryDetails
