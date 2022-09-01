@@ -1,3 +1,7 @@
+/*
+Component that handles the star ratings
+*/
+
 import React from 'react';
 import { useDispatch } from 'react-redux';
 

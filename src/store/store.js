@@ -1,6 +1,6 @@
 /*
 This preloadedState is used to initialize the Redux store
-If the data server is used, it will be overwritten
+If the user data server is used, it will be overwritten
 by the state from state.json!
 */
 

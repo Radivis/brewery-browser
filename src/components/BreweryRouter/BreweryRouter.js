@@ -1,3 +1,8 @@
+/*
+Defines the BrowserRouter routes
+that are used for internal navigation
+*/
+
 import React from "react";
 import {Routes, Route} from 'react-router-dom'
 

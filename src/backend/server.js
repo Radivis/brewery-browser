@@ -1,3 +1,8 @@
+/*
+Express server that just loads and saves the
+Redux store from and to the store.json file
+*/
+
 const express = require('express')
 const cors = require('cors')
 const fs = require('fs');
@@ -9,10 +14,6 @@ const port = 3010
 server.use(express.json({}))
 
 server.use(cors())
-
-// server.use(express.static('public', {
-//     extensions: ['html']
-// }))
 
 server.get('/load', (req, res) => {
     fs.readFile('./store.json', 'utf8', (err, data) => {

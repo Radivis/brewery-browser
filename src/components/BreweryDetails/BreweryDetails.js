@@ -1,3 +1,8 @@
+/*
+Shows more information about a brewery
+than a BreweryCard.
+*/
+
 import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
@@ -33,8 +38,6 @@ const BreweryDetails = () => {
         country,
         state,
         county_province,
-        // created_at,
-        // updated_at,
         city,
         postal_code,
         phone,

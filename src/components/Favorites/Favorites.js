@@ -1,3 +1,12 @@
+/*
+Displays a collection of BreweryCards of breweries
+that a logged in user has favorited.
+
+Also displays BreweryCards of breweries
+that a user has interacted with, but currently
+not favorited.
+*/
+
 import React from 'react';
 import { useSelector } from 'react-redux';
 
@@ -27,7 +36,7 @@ const Favorites = () => {
     })
 
     // First render the cards, let them load the data on their own!
-
+    if (user) {
     return <>
         <PageHeader title="Favorites" />
         <div className="cards">
@@ -39,7 +48,7 @@ const Favorites = () => {
         </div>
         {nonFavorites.length > 0 && (
             <>
-                <h3>Interacted, but not favorized</h3>
+                <h3>You interacted with these, but they are not favorized...</h3>
                 <div className="cards">
                     {nonFavorites.map(nonFavorite => <BreweryCard
                         data={{ id: nonFavorite.id }}
@@ -49,8 +58,13 @@ const Favorites = () => {
             </>
         )}
     </>
+    } else {
+        return <>
+        <PageHeader title="Favorites" />
+        <p>This page only shows your favorite breweries, if you are logged in.</p>
+        </>
+    }
+
 }
 
 export default Favorites
-
-// Interacted, but not favorited

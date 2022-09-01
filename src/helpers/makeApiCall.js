@@ -1,6 +1,12 @@
+/*
+Helper function that makes API calls after a user
+submits the search form
 
+This is not a custom hook, because custom hooks
+can't be used in or as event handlers!
+*/
 
-// useDispatch can't be used in a regular function, so it's passed as argument
+// useDispatch can't be used in a regular function, so dispatch is passed as argument
 const makeApiCall = ({
     path,
     dispatch,

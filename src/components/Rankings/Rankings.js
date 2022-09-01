@@ -1,3 +1,8 @@
+/*
+Ranking page as top list and plotly bar graph
+Based on the best average user ratings
+*/
+
 import React from 'react';
 import { useSelector } from 'react-redux';
 import Plot from 'react-plotly.js';

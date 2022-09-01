@@ -1,4 +1,9 @@
 /*
+This Component is displayed in the
+- BreweryCard
+- Brewery Details
+if a user is logged in.
+
 In the ActionPanel the user can
 - set a brewery as favorite
 - rate the brewery
@@ -7,7 +12,6 @@ In the ActionPanel the user can
 
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
 
 import Rating from '../Rating/Rating';
 import useUser from '../../hooks/useUser';
@@ -35,7 +39,6 @@ const ActionPanel = ({ data }) => {
 
     const [hoverFavorite, setHoverFavorite] = useState(false)
     const [isComposerActive, setIsComposerActive] = useState(false)
-
 
     const handleFavorite = () => {
         dispatch({

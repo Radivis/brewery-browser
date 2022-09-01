@@ -1,3 +1,7 @@
+/*
+Root reducer of the Redux store
+*/
+
 import deepCopy from "../helpers/deepCopy"
 
 // Helper function to store another brewery in a user object

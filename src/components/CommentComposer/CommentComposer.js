@@ -1,3 +1,7 @@
+/*
+Form for writing comments about a brewery
+*/
+
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 

@@ -1,3 +1,9 @@
+/*
+Search form that is used to assemble
+API queries based on the city name and
+brewery type that the user selects
+*/
+
 import React, { useState } from 'react';
 import { useDispatch } from "react-redux"
 

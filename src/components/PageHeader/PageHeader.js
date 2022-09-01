@@ -1,3 +1,8 @@
+/*
+Header element for pages with
+page title and back and home links
+*/
+
 import React from 'react';
 
 import { Link, useNavigate } from 'react-router-dom';
@@ -7,7 +12,7 @@ import './PageHeader.css'
 const PageHeader = ({title, isHome = false}) => {
     const navigate = useNavigate()
 
-return <div className="page-header">
+return <header className="page-header">
     {!isHome && (
         <>
         <button className="transparent header-link" onClick={() => navigate(-1)}>
@@ -17,7 +22,7 @@ return <div className="page-header">
         </>
     )}
     <h2 className="page-title">{title}</h2>
-</div>
+</header>
 }
 
 export default PageHeader
