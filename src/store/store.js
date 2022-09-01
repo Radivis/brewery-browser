@@ -19,9 +19,8 @@ const preloadedState = {
         password: 'faul',
         breweries: [
             {
-                id: 'string',
-                name: 'name',
-                isFavorite: false,
+                id: 'black-star-co-op-austin',
+                isFavorite: true,
                 rating: -1,
                 comment: ''
             }

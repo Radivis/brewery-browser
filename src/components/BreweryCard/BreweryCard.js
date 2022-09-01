@@ -54,6 +54,7 @@ const BreweryCard = ({ data }) => {
                     <i className="fa-solid fa-circle-info"></i>
                 </Link>
             </button>
+                {website_url && <a href={website_url}>Website</a>}
 
         </header>
         <div>Type: {brewery_type}</div>
@@ -61,7 +62,6 @@ const BreweryCard = ({ data }) => {
             <div>{street}</div>
             <div>{city}, {state ? `${state},` : ''} {country}</div>
         </div>
-        {website_url && <a href={website_url}>Website</a>}
         {user ? <ActionPanel data={data} /> : ''}
         <Comments id={id} />
     </div>
