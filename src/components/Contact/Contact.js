@@ -1,7 +1,9 @@
 import React from 'react';
+import PageHeader from '../PageHeader/PageHeader';
 
 const Contact = () => {
     return <div>
+        <PageHeader title="Contact" />
         <p>App programmed by Michael Hrenka</p>
         <p>Github: <a href="https://github.com/Radivis">github.com/Radivis</a></p>
         <hr />

@@ -1,0 +1,18 @@
+.page-header {
+    margin-left: 10px;
+}
+
+.page-title {
+    display: inline-block;
+    margin-left: 20px;
+}
+
+.header-link {
+    color: #000;
+    margin: 10px;
+    font-size: x-large;
+}
+
+.header-link:hover {
+    color: hsl(30, 75%, 30%);
+}

@@ -6,6 +6,7 @@ import BreweryResults from '../BreweryResults/BreweryResults';
 import makeApiCall from '../../helpers/makeApiCall';
 
 import './BrewerySearch.css'
+import PageHeader from '../PageHeader/PageHeader';
 
 const BrewerySearch = () => {
 
@@ -65,7 +66,7 @@ const BrewerySearch = () => {
     }
 
     return <div>
-        <h2>Find Breweries</h2>
+        <PageHeader title="Find Breweries" isHome={true} />
         <form className="search-form" onSubmit={handleSubmit}>
             <div>
                 <label htmlFor="city">City</label>

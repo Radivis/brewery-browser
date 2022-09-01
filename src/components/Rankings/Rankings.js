@@ -2,6 +2,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import Plot from 'react-plotly.js';
 import deepCopy from '../../helpers/deepCopy';
+import PageHeader from '../PageHeader/PageHeader';
 
 const Rankings = () => {
 
@@ -43,7 +44,6 @@ const Rankings = () => {
         brewery.name = capitalizedNameParts.join(" ")
     })
 
-
     // Sort the rankingData by averageRating after making a deep copy
     let sortedRankingData = deepCopy(rankingData)
     sortedRankingData.sort((a,b) => b.averageRating - a.averageRating)
@@ -52,7 +52,8 @@ const Rankings = () => {
     sortedRankingData = sortedRankingData.slice(0,3)
 
     return <div>
-        <h2>Highest average ratings</h2>
+        <PageHeader title="Rankings" />
+        <h3>Highest average ratings</h3>
         <ol>
             {sortedRankingData.map(brewery => <li key={brewery.id}>
                 {brewery.name}: <strong>{brewery.averageRating}</strong>
@@ -77,7 +78,9 @@ const Rankings = () => {
                     l: 30,
                     r: 170
                 },
-                font: 'Arima, "Open Sans", verdana, arial, sans-serif'
+                font: 'Arima, "Open Sans", verdana, arial, sans-serif',
+                paper_bgcolor: 'hsl(30, 100%, 90%)',
+                plot_bgcolor: 'hsl(30, 100%, 90%)'
             }}
             />
     </div>

@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 
 import useUser from '../../hooks/useUser';
 import BreweryCard from '../BreweryCard/BreweryCard';
+import PageHeader from '../PageHeader/PageHeader';
 
 const Favorites = () => {
     const user = useUser()
@@ -28,7 +29,7 @@ const Favorites = () => {
     // First render the cards, let them load the data on their own!
 
     return <>
-        <h2>Favorites</h2>
+        <PageHeader title="Favorites" />
         <div className="cards">
             {favorites.map(favorite => <BreweryCard
                 data={{ id: favorite.id }}
@@ -36,13 +37,17 @@ const Favorites = () => {
             )}
 
         </div>
-        <h3>Interacted, but not favorized</h3>
-        <div className="cards">
-            {nonFavorites.map(nonFavorite => <BreweryCard
-                data={{ id: nonFavorite.id }}
-                key={nonFavorite.id} />
-            )}
-        </div>
+        {nonFavorites.length > 0 && (
+            <>
+                <h3>Interacted, but not favorized</h3>
+                <div className="cards">
+                    {nonFavorites.map(nonFavorite => <BreweryCard
+                        data={{ id: nonFavorite.id }}
+                        key={nonFavorite.id} />
+                    )}
+                </div>
+            </>
+        )}
     </>
 }
 
