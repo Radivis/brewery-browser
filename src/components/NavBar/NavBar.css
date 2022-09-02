@@ -70,14 +70,14 @@ see also: https://alvarotrigo.com/blog/hamburger-menu-css/ */
 
 /* Error indicator and message code */
 
-.data-server-connection{
+.data-server-connection {
   flex-grow: 1;
   display: flex;
   flex-direction: row;
   align-items: center;
 }
 
-.data-server-indicator{
+.data-server-indicator {
   font-size: x-large;
   color: hsl(0, 100%, 50%);
   margin-left: 5px;
@@ -154,6 +154,7 @@ see also: https://alvarotrigo.com/blog/hamburger-menu-css/ */
 
 .navbar .menu-items {
   position: absolute;
+  z-index: 1;
   top: 0px;
   right: 0px;
   padding-top: 80px;
@@ -167,19 +168,27 @@ see also: https://alvarotrigo.com/blog/hamburger-menu-css/ */
   transition: transform 0.5s ease-in-out;
   text-align: center;
   background:
-    linear-gradient(to right,  hsla(0, 0%, 0%, 0.0), hsla(0, 0%, 0%, 0.5), hsla(0, 0%, 0%, 0.0));
-    /* linear-gradient(to right,  hsla(60, 100%, 80%, 0), hsla(60, 100%, 80%, 0.5), hsla(60, 100%, 80%, 0)); */
+    linear-gradient(to right,
+      hsla(0, 0%, 0%, 0.0),
+      hsla(0, 0%, 0%, 0.5),
+      hsla(0, 0%, 0%, 0.5),
+      hsla(0, 0%, 0%, 0.5),
+      hsla(0, 0%, 0%, 0.0));
 }
 
 .navbar .menu-items li {
   margin-bottom: 1.2rem;
   font-size: 1.5rem;
-  font-weight: 500;
-  background-image: radial-gradient(closest-side at 50% 50%, hsla(60, 100%, 90%, 1), hsla(60, 100%, 80%, 0.75), hsla(60, 100%, 80%, 0));
+  font-weight: 700;
+  background-image: radial-gradient(closest-side at 50% 50%,
+      hsla(60, 100%, 90%, 1),
+      hsla(60, 100%, 90%, 1),
+      hsla(60, 100%, 80%, 0.75),
+      hsla(60, 100%, 80%, 0));
 }
 
 .navbar .menu-items a:hover {
-  font-weight: bolder;
+  font-size: larger;
 }
 
 .nav-container .menu-items-slide-in {
