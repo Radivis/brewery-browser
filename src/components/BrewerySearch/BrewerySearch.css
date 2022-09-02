@@ -1,3 +1,20 @@
 .search-form {
+    width: 400px;
+    margin: 5px;
+    border: 2px solid hsl(30, 50%, 25%);
+    border-radius: 10px;
+    padding: 5px;
+}
+
+.search-form .form-row {
     margin: 5px;
 }
+
+.search-form button {
+    margin: 5px;
+}
+
+.search-form input::placeholder {
+    color: hsl(30, 25%, 65%)
+}
+

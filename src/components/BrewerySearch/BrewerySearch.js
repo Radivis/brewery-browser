@@ -73,14 +73,14 @@ const BrewerySearch = () => {
     return <div>
         <PageHeader title="Find Breweries" isHome={true} />
         <form className="search-form" onSubmit={handleSubmit}>
-            <div>
-                <label htmlFor="city">City</label>
+            <div className="form-row">
+                <label htmlFor="city">City:</label>
                 <input type="text" name="city" placeholder="Dublin" value={city} onChange={handleChange}></input>
             </div>
-            <div>
-                <label htmlFor="type">Type</label>
+            <div className="form-row">
+                <label htmlFor="type">Type:</label>
                 <select name="type" value={type} onChange={handleChange}>
-                    <option value="" key="nothing selected">-Select a type-</option>
+                    <option value="" key="nothing selected">All types</option>
                     {validTypes.map(validType => <option value={validType} key={validType}>{validType}</option>)}
                 </select>
             </div>
