@@ -2,7 +2,10 @@
 
 ## Requirements
 
-Have node.js installed on your device.
+Have [node.js](https://nodejs.org) installed on your device. Node version 16.15.1 or higher suffices.
+You can check your currently installed version in a console window with
+
+### `node -v`
 
 ## Installation
 
@@ -16,13 +19,14 @@ Open a console and move to the project directory. Then type:
 
 If you want to use the app with user data, you need to start the user data server first:
 
-### `node src/backend/server.js`
+### `cd src/backend`
+### `node server.js`
 
 The data server runs on port 3010 by default. If that happens to be used already, you need to edit port constant in the server.js file first.
 
 ### 3) Start app
 
-Finally, start the app with:
+Finally, start the app in a different console window or tab with:
 
 ### `npm start`
 
@@ -30,7 +34,7 @@ A new browser tab in your default browser should open now.
 
 ## App description
 
-The Brewery Browser uses data from the API of Open Brewery DB.
+The Brewery Browser uses data from the API of [Open Brewery DB](https://www.openbrewerydb.org).
 Users can search for breweries via the search form.
 
 Users can register a user account and then
@@ -55,7 +59,7 @@ Passwords for newly registered users need to be at least 8 characters long.
 
 ## Remarks
 
-This project has been the result of a React "bootcamp" course by AlfaTraining.
+This project has been the result of a final assignment in a React "bootcamp" course by [alfatraining](https://www.alfatraining.com).
 
 ## License
 MIT, see LICENSE.txt.
